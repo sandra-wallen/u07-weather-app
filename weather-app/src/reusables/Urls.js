@@ -1,0 +1,1 @@
+export const API_CURRENT_WEATHER = (lat, lon) => `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=5993c224a13b9d0834585d73cfa90915&units=metric`;
