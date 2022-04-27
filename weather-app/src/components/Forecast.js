@@ -13,45 +13,53 @@ const Forecast = ({ lat, lon }) => {
       .then(res => res.json())
       .then((data) => {
 
-        console.log(data)
-        const dailyData = data.daily.map((day) => {
-
-          console.log(day)
+        const dailyData = [];
+        
+        for (const day of data.daily) {
           const date = new Date(day.dt * 1000);
-
-          return {
+          
+          const dayObject = {
             date: date,
             temp: day.temp.day,
             weather: day.weather[0].main
+          };
+
+          dailyData.push(dayObject);
+        }
+
+        setForecastDaily(dailyData.slice(1, 6));
+
+        return data.hourly;
+      })
+      .then((data) => {
+
+        const hourlyData = [];
+
+        for (const hour of data) {
+          const date = new Date(hour.dt * 1000);
+
+          if (date < forecastDaily[0].date) {
+            const hourObject = {
+              date: date,
+              temp: hour.temp,
+              weather: hour.weather[0].main,
+              wind: hour.wind_speed,
+              humidity: hour.humidity
+            }
+
+            hourlyData.push(hourObject);
           }
-        })
 
-        setForecastDaily(dailyData);
+        }
 
-        // const hourlyData = data.hourly.map((hour) => {
-        //   const date = new Date(hour.dt * 1000);
-
-        //   if (date < forecastDaily[0].date) {
-        //     return {
-        //       date: date,
-        //       temp: hour.temp,
-        //       weather: hour.weather[0].main,
-        //       wind: hour.wind_speed,
-        //       humidity: hour.humidity
-        //     }
-        //   } else {
-        //     return '';
-        //   }
-        // })
-
-        // setForecastHourly(hourlyData);
-
+        setForecastHourly(hourlyData);
+        
       })
 
   }, [lat, lon])
 
-  console.log('daily' + forecastDaily);
-  //console.log('hourly' + forecastHourly);
+  console.log(forecastDaily);
+  console.log(forecastHourly);
 
   return (
     <p>Forecast</p>
