@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;1,400;1,500&display=swap');
+
+:root {
+  font-size: 10px;
+  font-family: 'Montserrat', sans-serif;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,9 +12,98 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.main {
+  width: 70%;
+}
+
+.header {
+  width: 70%
+}
+
+.footer {
+  width: 70%;
+}
+
+.current-weather__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+  "location location"
+  "temp temp"
+  "weather weather"
+  "wind humid"
+  "sunrise sunset";
+}
+
+.current-weather__location {
+  grid-area: location;
+  font-size: 3.5rem;
+  margin: 1.5rem 0;
+  justify-self: center;
+}
+
+.current-weather__temp {
+  grid-area: temp;
+  font-size: 3rem;
+  margin: 1rem 0;
+  justify-self: center;
+}
+
+.current-weather__weather {
+  grid-area: weather;
+  font-size: 2.5rem;
+  margin: 1rem 0;
+  justify-self: center;
+}
+
+.current-weather__wind {
+  grid-area: wind;
+  font-size: 1.8rem;
+  margin: 0.5rem 1rem;
+  justify-self: end;
+}
+
+.current-weather__humidity {
+  grid-area: humid;
+  font-size: 1.8rem;
+  margin: 0.5rem 1rem;
+  justify-self: start;
+}
+
+.current-weather__sunrise {
+  grid-area: sunrise;
+  font-size: 1.8rem;
+  margin: 0.5rem 1rem;
+  justify-self: end;
+  display: flex;
+  align-items: flex-end;
+}
+
+.current-weather__sunset {
+  grid-area: sunset;
+  font-size: 1.8rem;
+  margin: 0.5rem 1rem;
+  justify-self: start;
+  display: flex;
+  align-items: flex-end;
+}
+
+.current-weather__sunrise p, .current-weather__sunset p {
+  margin: 0;
+} 

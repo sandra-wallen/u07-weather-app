@@ -53,7 +53,7 @@ const Forecast = ({ lat, lon }) => {
         }
 
         setForecastHourly(hourlyData);
-        
+
       })
 
   }, [lat, lon])

@@ -1,27 +1,16 @@
 import React, { useEffect, useState } from 'react';
 
-import { API_CURRENT_WEATHER } from '../reusables/Urls';
-
+import CurrentWeather from './CurrentWeather';
 import Forecast from './Forecast';
 
 const Main = () => {
 
   const [lat, setLat] = useState(0);
   const [lon, setLon] = useState(0);
-  const [currentWeather, setCurrentWeather] = useState({
-    location: '',
-    temp: '',
-    weather: '',
-    unit: '',
-    wind: '',
-    humidity: '',
-    sunrise: '',
-    sunset: ''
-  });
   
 
   useEffect(() => {
-    console.log('useEffect triggered');
+    console.log('main useEffect triggered');
 
     const success = (pos) => {
       const coords = pos.coords;
@@ -36,48 +25,14 @@ const Main = () => {
       console.warn(`ERROR(${err.code}): ${err.message}`);
     }
 
-    navigator.geolocation.getCurrentPosition(success, error);
-
-    fetch(API_CURRENT_WEATHER(lat, lon))
-      .then(res => res.json())
-      .then((data) => {
-        const apiRes = {
-          location: data.name,
-          temp: data.main.temp,
-          weather: data.weather[0].main,
-          unit: 'C',
-          wind: data.wind.speed,
-          humidity: data.main.humidity,
-          sunrise: data.sys.sunrise,
-          sunset: data.sys.sunset
-        };
-
-        console.log(data);
-        setCurrentWeather(apiRes);
-      })
-      .catch(err => console.error(err))
+    navigator.geolocation.getCurrentPosition(success, error); 
   }, [lat, lon])
 
-  const convertTime = (val) => {
-    const time = new Date(val * 1000);
-
-    return time.toLocaleTimeString("sv-SE", {
-      hour: "2-digit",
-      minute: "2-digit",
-      hour12: false
-    });
-  }
-  
 
   return (
-    <main>
-      <h2>{currentWeather.location}</h2>
-      <p>{currentWeather.temp} &deg; {currentWeather.unit} <span>{currentWeather.weather}</span></p>
-      <p>Wind speed: {currentWeather.wind}</p>
-      <p>Humidity: {currentWeather.humidity}</p>
-      <p>Sunrise: {convertTime(currentWeather.sunrise)}</p>
-      <p>Sunset: {convertTime(currentWeather.sunset)}</p>
-      <Forecast lat={lat} lon={lon} />
+    <main className='main'>
+      <CurrentWeather lat={lat} lon={lon} />
+      {/* <Forecast lat={lat} lon={lon} /> */}
     </main>
   )
 }
