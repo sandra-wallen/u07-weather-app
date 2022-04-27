@@ -32,7 +32,7 @@ const Main = () => {
   return (
     <main className='main'>
       <CurrentWeather lat={lat} lon={lon} />
-      {/* <Forecast lat={lat} lon={lon} /> */}
+      <Forecast lat={lat} lon={lon} />
     </main>
   )
 }
