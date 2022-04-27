@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 
 import { API_CURRENT_WEATHER } from '../reusables/Urls';
 
+import Forecast from './Forecast';
+
 const Main = () => {
 
   const [lat, setLat] = useState(0);
@@ -50,6 +52,7 @@ const Main = () => {
           sunset: data.sys.sunset
         };
 
+        console.log(data);
         setCurrentWeather(apiRes);
       })
       .catch(err => console.error(err))
@@ -74,6 +77,7 @@ const Main = () => {
       <p>Humidity: {currentWeather.humidity}</p>
       <p>Sunrise: {convertTime(currentWeather.sunrise)}</p>
       <p>Sunset: {convertTime(currentWeather.sunset)}</p>
+      <Forecast lat={lat} lon={lon} />
     </main>
   )
 }
