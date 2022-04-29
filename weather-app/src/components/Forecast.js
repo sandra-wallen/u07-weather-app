@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
 
 import { API_FORECAST_WEATHER } from '../reusables/Urls';
+import { hourlyDataMockup, dailyDataMockup } from '../reusables/Mockup';
 
 import HourlyForecast from './HourlyForecast';
+import DailyForecast from './DailyForecast';
 
 const Forecast = ({ lat, lon }) => {
 
-  const [forecastDaily, setForecastDaily] = useState([]);
-  const [forecastHourly, setForecastHourly] = useState([]);
+  const [forecastDaily, setForecastDaily] = useState(dailyDataMockup);
+  const [forecastHourly, setForecastHourly] = useState(hourlyDataMockup);
 
   useEffect(() => {
     console.log('Forecast useEffect triggered');
@@ -31,6 +33,7 @@ const Forecast = ({ lat, lon }) => {
             dailyData.push(dayObject);
           }
 
+          console.log('setForecastDaily' + dailyData);
           setForecastDaily(dailyData.slice(1, 6));
 
         } 
@@ -38,29 +41,24 @@ const Forecast = ({ lat, lon }) => {
         const handleHourlyData = async () => {
           await handleDailyData();
 
-          const hourlyData = [];
+          const filteredData = data.hourly.filter((val, i) => i < 23);
 
-          for (const hour of data.hourly) {
+          const hourlyData = filteredData.map((hour) => {
             const date = new Date(hour.dt * 1000);
 
-            if (date < forecastDaily[0].date) {
-              const hourObject = {
-                date: date,
-                temp: hour.temp,
-                weather: hour.weather[0].main,
-                wind: hour.wind_speed,
-                humidity: hour.humidity
-              }
-
-              hourlyData.push(hourObject);
+            return {
+              date: date,
+              temp: hour.temp,
+              weather: hour.weather[0].main,
+              wind: hour.wind_speed,
+              humidity: hour.humidity
             }
-
-          }
+          })
 
           setForecastHourly(hourlyData);
         }
 
-        handleHourlyData();
+        //handleHourlyData();
       })
 
   }, [lat, lon])
@@ -69,7 +67,10 @@ const Forecast = ({ lat, lon }) => {
   console.log(forecastHourly);
 
   return (
-    <HourlyForecast forecastHourly={forecastHourly} />
+    <>
+      <HourlyForecast forecastHourly={forecastHourly} />
+      <DailyForecast forecastDaily={forecastDaily} />
+    </>
   )
 }
 

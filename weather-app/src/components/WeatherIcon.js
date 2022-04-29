@@ -1,28 +1,28 @@
 import React from 'react';
 
-const WeatherIcon = ({ weather }) => {
+const WeatherIcon = ({ weather, size }) => {
 
   const generateWeatherImg = () => {
     let imgSrc = "";
 
     switch(weather) {
       case "Thunderstorm":
-        imgSrc = "/icons/icons8-cloud-lightning-80.png";
+        imgSrc = `/icons/icons8-cloud-lightning-${size}.png`;
         break;
       case "Drizzle":
-        imgSrc = "/icons/icons8-light-rain-80.png";
+        imgSrc = `/icons/icons8-light-rain-${size}.png`;
         break;
       case "Rain":
-        imgSrc = "/icons/icons8-rain-80.png";
+        imgSrc = `/icons/icons8-rain-${size}.png`;
         break;
       case "Snow":
-        imgSrc = "/icons/icons8-snow-80.png";
+        imgSrc = `/icons/icons8-snow-${size}.png`;
         break;
       case "Clear":
-        imgSrc = "/icons/icons8-sun-80.png";
+        imgSrc = `/icons/icons8-sun-${size}.png`;
         break;
       case "Clouds":
-        imgSrc = "/icons/icons8-clouds-80.png";
+        imgSrc = `/icons/icons8-clouds-${size}.png`;
         break;
       default:
         imgSrc = "";

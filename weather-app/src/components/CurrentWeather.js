@@ -13,29 +13,29 @@ const CurrentWeather = ({ lat, lon }) => {
     unit: 'C',
     wind: '4.12',
     humidity: '43',
-    sunrise: '05:00',
-    sunset: '20:30'
+    sunrise: new Date(),
+    sunset: new Date()
   });
 
   useEffect(() => {
     console.log('Current useEffect triggered');
 
-    fetch(API_CURRENT_WEATHER(lat, lon))
-    .then(res => res.json())
-    .then((data) => {
-      const apiRes = {
-        location: data.name,
-        temp: data.main.temp,
-        weather: data.weather[0].main,
-        unit: 'C',
-        wind: data.wind.speed,
-        humidity: data.main.humidity,
-        sunrise: data.sys.sunrise,
-        sunset: data.sys.sunset
-      };
-      setCurrentWeather(apiRes);
-    })
-    .catch(err => console.error(err))
+    // fetch(API_CURRENT_WEATHER(lat, lon))
+    // .then(res => res.json())
+    // .then((data) => {
+    //   const apiRes = {
+    //     location: data.name,
+    //     temp: data.main.temp,
+    //     weather: data.weather[0].main,
+    //     unit: 'C',
+    //     wind: data.wind.speed,
+    //     humidity: data.main.humidity,
+    //     sunrise: data.sys.sunrise,
+    //     sunset: data.sys.sunset
+    //   };
+    //   setCurrentWeather(apiRes);
+    // })
+    // .catch(err => console.error(err))
   }, [lat, lon])
 
   const convertTime = (val) => {
@@ -52,15 +52,15 @@ const CurrentWeather = ({ lat, lon }) => {
     <div className='current-weather__container'>
       <p className='current-weather__location'>{currentWeather.location}</p>
       <p className='current-weather__temp'>{Math.round(currentWeather.temp)} &deg; {currentWeather.unit}</p>
-      <WeatherIcon weather={currentWeather.weather} />
+      <WeatherIcon weather={currentWeather.weather} size="80" />
       <p className='current-weather__wind'>Wind: {currentWeather.wind}m/s</p>
       <p className='current-weather__humidity'>Humidity: {currentWeather.humidity}%</p>
       <div className='current-weather__sunrise'>
-        <img src="/icons/icons8-sunrise-80.png" alt='sunrise'/>
+        <img src="/icons/icons8-sunrise-50.png" alt='sunrise'/>
         <p>{convertTime(currentWeather.sunrise)}</p>
       </div>
       <div className='current-weather__sunset'>
-        <img src="/icons/icons8-sunset-80.png" alt='sunrise'/>
+        <img src="/icons/icons8-sunset-50.png" alt='sunrise'/>
         <p>{convertTime(currentWeather.sunset)}</p>
       </div>
     </div>

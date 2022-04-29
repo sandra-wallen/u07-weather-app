@@ -4,16 +4,24 @@ import WeatherIcon from './WeatherIcon';
 
 const HourlyForecast = ({ forecastHourly }) => {
 
-  console.log(forecastHourly);
+  const convertTime = (val) => {
+     return val.toLocaleTimeString("sv-SE", {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false
+    });
+  }
+
   return (
-    <section>
-      {forecastHourly.forEach((hour) => (
-        <div>
-          <p>{hour.date}</p>
-          <WeatherIcon weather={hour.weather} />
-          <p>{Math.round(hour.temp)}</p>
+    <section className='hourly-forecast__section'>
+      {forecastHourly.map((hour) => (
+        <div className='hourly-forecast__container'>
+          <p>{convertTime(hour.date)}</p>
+          <WeatherIcon weather={hour.weather} size="50" />
+          <p>{Math.round(hour.temp)}&deg;</p>
         </div>
       ))}
+      {/* {forecastHourly.map(hour => <HourlyForecastItem key={hour.date} hour={hour} />)} */}
     </section>
   )
 }

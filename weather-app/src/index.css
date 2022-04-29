@@ -25,6 +25,7 @@ code {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: #f0f0f0;
 }
 
 .main {
@@ -39,6 +40,7 @@ code {
   width: 70%;
 }
 
+/* CURRENT WEATHER */
 .current-weather__container {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -107,3 +109,48 @@ code {
 .current-weather__sunrise p, .current-weather__sunset p {
   margin: 0;
 } 
+
+
+/* HOURLY FORECAST */
+.hourly-forecast__section {
+  margin: 5rem 0;
+  border-top: 0.1rem solid #e0e0e0;
+  border-bottom: 0.1rem solid #e0e0e0;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+.hourly-forecast__container {
+  margin: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hourly-forecast__container p {
+  margin: 0.5rem 0;
+  font-size: 1.6rem;
+}
+
+
+/* DAILY FORECAST */
+.daily-forecast__section {
+  padding: 0 6rem;
+}
+
+.daily-forecast__section > p {
+  font-size: 2rem;
+}
+
+.daily-forecast__container {
+  padding: 5rem 0;
+  border-top: 0.1rem solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.daily-forecast__container p {
+  font-size: 2.6rem;
+}
