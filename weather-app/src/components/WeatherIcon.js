@@ -1,6 +1,6 @@
 import React from 'react';
 
-const WeatherIcon = ({ weather, size }) => {
+const WeatherIcon = ({ weather, size, className }) => {
 
   const generateWeatherImg = () => {
     let imgSrc = "";
@@ -32,7 +32,7 @@ const WeatherIcon = ({ weather, size }) => {
   }
 
   return (
-    <img className='current-weather__weather' src={generateWeatherImg()} alt={weather}/>
+    <img className={`${className} weather_icon`} src={generateWeatherImg()} alt={weather}/>
   )
 }
 

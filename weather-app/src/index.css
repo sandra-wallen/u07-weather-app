@@ -29,15 +29,34 @@ code {
 }
 
 .main {
-  width: 70%;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 2rem;
 }
 
 .header {
-  width: 70%
+  box-sizing: border-box;
+  width: 100%;
+  padding: 2rem
 }
 
 .footer {
-  width: 70%;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 2rem
+}
+
+.footer p {
+  font-size: 1.6rem;
+  margin: 0 0 0.5rem 0;
+  text-align: center;
+}
+
+h1 {
+  font-weight: 500;
+  font-size: 2.5rem;
+  margin: 0 0 0.5rem 0;
+  border-bottom: 0.2rem solid #f8f8f8;
 }
 
 /* CURRENT WEATHER */
@@ -55,15 +74,15 @@ code {
 
 .current-weather__location {
   grid-area: location;
-  font-size: 3.5rem;
-  margin: 1.5rem 0;
+  font-size: 3rem;
+  margin: 0;
   justify-self: center;
 }
 
 .current-weather__temp {
   grid-area: temp;
-  font-size: 3rem;
-  margin: 1rem 0;
+  font-size: 5rem;
+  margin: 0;
   justify-self: center;
 }
 
@@ -76,15 +95,15 @@ code {
 
 .current-weather__wind {
   grid-area: wind;
-  font-size: 1.8rem;
-  margin: 0.5rem 1rem;
+  font-size: 1.6rem;
+  margin: 0 1rem;
   justify-self: end;
 }
 
 .current-weather__humidity {
   grid-area: humid;
-  font-size: 1.8rem;
-  margin: 0.5rem 1rem;
+  font-size: 1.6rem;
+  margin: 0 1rem;
   justify-self: start;
 }
 
@@ -113,12 +132,15 @@ code {
 
 /* HOURLY FORECAST */
 .hourly-forecast__section {
-  margin: 5rem 0;
-  border-top: 0.1rem solid #e0e0e0;
-  border-bottom: 0.1rem solid #e0e0e0;
+  margin: 2rem 0;
+  padding: 0.5rem;
+  /* border-top: 0.1rem solid #e0e0e0;
+  border-bottom: 0.1rem solid #e0e0e0; */
   display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;
+  border-radius: 1rem;
+  background-color: #f8f8f8;
 }
 
 .hourly-forecast__container {
@@ -136,15 +158,18 @@ code {
 
 /* DAILY FORECAST */
 .daily-forecast__section {
-  padding: 0 6rem;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  background-color: #f8f8f8;
 }
 
 .daily-forecast__section > p {
-  font-size: 2rem;
+  font-size: 1.6rem;
+  margin: 0.5rem 0;
 }
 
 .daily-forecast__container {
-  padding: 5rem 0;
+  padding: 1.5rem 0;
   border-top: 0.1rem solid #e0e0e0;
   display: flex;
   justify-content: space-between;
@@ -152,5 +177,49 @@ code {
 }
 
 .daily-forecast__container p {
-  font-size: 2.6rem;
+  font-size: 1.8rem;
+  margin: 1rem 0;
+}
+
+@media (min-width: 768px) {
+  .main {
+    width: 90%;
+  }
+
+  .current-weather__location {
+    font-size: 3.5rem;
+  }
+
+  .hourly-forecast__section {
+    margin: 5rem 0;
+  }
+
+  .daily-forecast__container {
+    padding: 2rem 1rem;
+  }
+
+  .daily-forecast__container p {
+    font-size: 2rem;
+  }
+  
+}
+
+@media (min-width: 992px) {
+  .main {
+    width: 70%;
+  }
+
+  .daily-forecast__container {
+    padding: 5rem 2rem;
+  }
+
+  .daily-forecast__container p {
+    font-size: 2.6rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .main {
+    width: 60%;
+  }
 }

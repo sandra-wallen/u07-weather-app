@@ -8,7 +8,7 @@ const CurrentWeather = ({ lat, lon }) => {
 
   const [currentWeather, setCurrentWeather] = useState({
     location: 'Älvsjö',
-    temp: '9',
+    temp: '12',
     weather: 'Clouds',
     unit: 'C',
     wind: '4.12',
@@ -51,8 +51,8 @@ const CurrentWeather = ({ lat, lon }) => {
   return (
     <div className='current-weather__container'>
       <p className='current-weather__location'>{currentWeather.location}</p>
-      <p className='current-weather__temp'>{Math.round(currentWeather.temp)} &deg; {currentWeather.unit}</p>
-      <WeatherIcon weather={currentWeather.weather} size="80" />
+      <p className='current-weather__temp'>{Math.round(currentWeather.temp)}&deg;</p>
+      <WeatherIcon weather={currentWeather.weather} size="80" className="current-weather__weather" />
       <p className='current-weather__wind'>Wind: {currentWeather.wind}m/s</p>
       <p className='current-weather__humidity'>Humidity: {currentWeather.humidity}%</p>
       <div className='current-weather__sunrise'>
