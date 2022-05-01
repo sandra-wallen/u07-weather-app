@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import CurrentWeather from './CurrentWeather';
 import Forecast from './Forecast';
 
-const Main = () => {
+const Main = ({ unit }) => {
 
   const [lat, setLat] = useState(0);
   const [lon, setLon] = useState(0);
@@ -28,11 +28,13 @@ const Main = () => {
     navigator.geolocation.getCurrentPosition(success, error); 
   }, [lat, lon])
 
+  
+
 
   return (
     <main className='main'>
-      <CurrentWeather lat={lat} lon={lon} />
-      <Forecast lat={lat} lon={lon} />
+      <CurrentWeather lat={lat} lon={lon} unit={unit} />
+      <Forecast lat={lat} lon={lon} unit={unit} />
     </main>
   )
 }

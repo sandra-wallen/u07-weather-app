@@ -6,7 +6,7 @@ import { hourlyDataMockup, dailyDataMockup } from '../reusables/Mockup';
 import HourlyForecast from './HourlyForecast';
 import DailyForecast from './DailyForecast';
 
-const Forecast = ({ lat, lon }) => {
+const Forecast = ({ lat, lon, unit }) => {
 
   const [forecastDaily, setForecastDaily] = useState(dailyDataMockup);
   const [forecastHourly, setForecastHourly] = useState(hourlyDataMockup);
@@ -14,7 +14,7 @@ const Forecast = ({ lat, lon }) => {
   useEffect(() => {
     console.log('Forecast useEffect triggered');
 
-    fetch(API_FORECAST_WEATHER(lat, lon))
+    fetch(API_FORECAST_WEATHER(lat, lon, unit))
       .then(res => res.json())
       .then((data) => {
 
@@ -41,7 +41,7 @@ const Forecast = ({ lat, lon }) => {
         const handleHourlyData = async () => {
           await handleDailyData();
 
-          const filteredData = data.hourly.filter((val, i) => i < 23);
+          const filteredData = data.hourly.filter((val, i) => i < 22);
 
           const hourlyData = filteredData.map((hour) => {
             const date = new Date(hour.dt * 1000);
@@ -61,7 +61,7 @@ const Forecast = ({ lat, lon }) => {
         //handleHourlyData();
       })
 
-  }, [lat, lon])
+  }, [lat, lon, unit])
 
   console.log(forecastDaily);
   console.log(forecastHourly);

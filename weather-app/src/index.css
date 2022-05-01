@@ -36,6 +36,8 @@ code {
 
 .header {
   box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
   width: 100%;
   padding: 2rem
 }
@@ -134,8 +136,6 @@ h1 {
 .hourly-forecast__section {
   margin: 2rem 0;
   padding: 0.5rem;
-  /* border-top: 0.1rem solid #e0e0e0;
-  border-bottom: 0.1rem solid #e0e0e0; */
   display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;
@@ -181,6 +181,23 @@ h1 {
   margin: 1rem 0;
 }
 
+.unit-select__container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+.unit-select__label {
+  font-size: 1.4rem;
+}
+
+.unit-select__input {
+  padding: 0.5rem 1rem;
+  max-width: 15rem;
+  border-radius: 0.5rem;
+  font-size: 1.6rem;
+}
+
 @media (min-width: 768px) {
   .main {
     width: 90%;
@@ -219,6 +236,10 @@ h1 {
 }
 
 @media (min-width: 1440px) {
+  .header {
+    padding: 2rem 10rem;
+  }
+
   .main {
     width: 60%;
   }

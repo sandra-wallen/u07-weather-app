@@ -1,11 +1,12 @@
 import React from 'react';
+import UnitSelect from './UnitSelect';
 
-const Header = () => {
+const Header = ({ unit, handleOnChange }) => {
 
   return (
     <header className='header'>
       <h1>WEATHER APP</h1>
-      <p></p>
+      <UnitSelect unit={unit} handleOnChange={handleOnChange} />
     </header>
   );
 }

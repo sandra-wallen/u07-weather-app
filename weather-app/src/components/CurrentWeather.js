@@ -4,13 +4,13 @@ import { API_CURRENT_WEATHER } from '../reusables/Urls';
 
 import WeatherIcon from './WeatherIcon';
 
-const CurrentWeather = ({ lat, lon }) => {
+const CurrentWeather = ({ lat, lon, unit }) => {
 
   const [currentWeather, setCurrentWeather] = useState({
     location: 'Älvsjö',
     temp: '12',
     weather: 'Clouds',
-    unit: 'C',
+    unit: unit === "metric" ? "C" : "F",
     wind: '4.12',
     humidity: '43',
     sunrise: new Date(),
@@ -20,14 +20,14 @@ const CurrentWeather = ({ lat, lon }) => {
   useEffect(() => {
     console.log('Current useEffect triggered');
 
-    // fetch(API_CURRENT_WEATHER(lat, lon))
+    // fetch(API_CURRENT_WEATHER(lat, lon, unit))
     // .then(res => res.json())
     // .then((data) => {
     //   const apiRes = {
     //     location: data.name,
     //     temp: data.main.temp,
     //     weather: data.weather[0].main,
-    //     unit: 'C',
+    //     unit: unit === "metric" ? "C" : "F",
     //     wind: data.wind.speed,
     //     humidity: data.main.humidity,
     //     sunrise: data.sys.sunrise,
@@ -36,7 +36,7 @@ const CurrentWeather = ({ lat, lon }) => {
     //   setCurrentWeather(apiRes);
     // })
     // .catch(err => console.error(err))
-  }, [lat, lon])
+  }, [lat, lon, unit])
 
   const convertTime = (val) => {
     const time = new Date(val * 1000);
@@ -51,9 +51,9 @@ const CurrentWeather = ({ lat, lon }) => {
   return (
     <div className='current-weather__container'>
       <p className='current-weather__location'>{currentWeather.location}</p>
-      <p className='current-weather__temp'>{Math.round(currentWeather.temp)}&deg;</p>
+      <p className='current-weather__temp'>{Math.round(currentWeather.temp)}&deg;{currentWeather.unit}</p>
       <WeatherIcon weather={currentWeather.weather} size="80" className="current-weather__weather" />
-      <p className='current-weather__wind'>Wind: {currentWeather.wind}m/s</p>
+      <p className='current-weather__wind'>Wind: {currentWeather.wind}{unit === "metric" ? "m/s" : "m/h"}</p>
       <p className='current-weather__humidity'>Humidity: {currentWeather.humidity}%</p>
       <div className='current-weather__sunrise'>
         <img src="/icons/icons8-sunrise-50.png" alt='sunrise'/>
