@@ -1,0 +1,4 @@
+[build]
+  base = "weather-app/"
+  publish = "build/"
+  command = "npm run build"
