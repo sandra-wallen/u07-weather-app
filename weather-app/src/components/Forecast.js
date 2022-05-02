@@ -17,7 +17,6 @@ const Forecast = ({ lat, lon, unit }) => {
     fetch(API_FORECAST_WEATHER(lat, lon, unit))
       .then(res => res.json())
       .then((data) => {
-
         const handleDailyData = async () => {
           const dailyData = [];
         
@@ -33,9 +32,7 @@ const Forecast = ({ lat, lon, unit }) => {
             dailyData.push(dayObject);
           }
 
-          console.log('setForecastDaily' + dailyData);
           setForecastDaily(dailyData.slice(1, 6));
-
         } 
         
         const handleHourlyData = async () => {
@@ -58,13 +55,10 @@ const Forecast = ({ lat, lon, unit }) => {
           setForecastHourly(hourlyData);
         }
 
-        //handleHourlyData();
+        handleHourlyData();
       })
 
   }, [lat, lon, unit])
-
-  console.log(forecastDaily);
-  console.log(forecastHourly);
 
   return (
     <>

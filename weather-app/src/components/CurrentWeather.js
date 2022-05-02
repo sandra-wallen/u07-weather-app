@@ -20,22 +20,22 @@ const CurrentWeather = ({ lat, lon, unit }) => {
   useEffect(() => {
     console.log('Current useEffect triggered');
 
-    // fetch(API_CURRENT_WEATHER(lat, lon, unit))
-    // .then(res => res.json())
-    // .then((data) => {
-    //   const apiRes = {
-    //     location: data.name,
-    //     temp: data.main.temp,
-    //     weather: data.weather[0].main,
-    //     unit: unit === "metric" ? "C" : "F",
-    //     wind: data.wind.speed,
-    //     humidity: data.main.humidity,
-    //     sunrise: data.sys.sunrise,
-    //     sunset: data.sys.sunset
-    //   };
-    //   setCurrentWeather(apiRes);
-    // })
-    // .catch(err => console.error(err))
+    fetch(API_CURRENT_WEATHER(lat, lon, unit))
+    .then(res => res.json())
+    .then((data) => {
+      const apiRes = {
+        location: data.name,
+        temp: data.main.temp,
+        weather: data.weather[0].main,
+        unit: unit === "metric" ? "C" : "F",
+        wind: data.wind.speed,
+        humidity: data.main.humidity,
+        sunrise: data.sys.sunrise,
+        sunset: data.sys.sunset
+      };
+      setCurrentWeather(apiRes);
+    })
+    .catch(err => console.error(err))
   }, [lat, lon, unit])
 
   const convertTime = (val) => {

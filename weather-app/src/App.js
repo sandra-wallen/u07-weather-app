@@ -10,7 +10,6 @@ const App = () => {
   const [unit, setUnit] = useState("metric");
 
   const handleOnChange = (val) => {
-    console.log(val);
     setUnit(val);
   }
 

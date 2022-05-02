@@ -17,8 +17,6 @@ const Main = ({ unit }) => {
   
       setLat(coords.latitude);
       setLon(coords.longitude);
-  
-      console.log(lat, lon);
     }
   
     const error = (err) => {
@@ -27,9 +25,6 @@ const Main = ({ unit }) => {
 
     navigator.geolocation.getCurrentPosition(success, error); 
   }, [lat, lon])
-
-  
-
 
   return (
     <main className='main'>

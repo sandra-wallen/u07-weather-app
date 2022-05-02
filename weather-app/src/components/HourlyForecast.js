@@ -21,7 +21,6 @@ const HourlyForecast = ({ forecastHourly }) => {
           <p>{Math.round(hour.temp)}&deg;</p>
         </div>
       ))}
-      {/* {forecastHourly.map(hour => <HourlyForecastItem key={hour.date} hour={hour} />)} */}
     </section>
   )
 }
