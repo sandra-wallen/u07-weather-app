@@ -35,4 +35,4 @@ To be able to put as much of my time into the functionality of the app I put min
 At last I just want to say that even though there are still some questionmarks for me regarding useEffect, I have learned so much about it during this project and really started to see the benefits of it and of React states. I felt real satisfaction when I realised that if I make useEffect depend on the measurement unit state and then update the state in some component, this will trigger useEffect and the api call with the newly set measurement unit automatically 😍
 
 ## Watch it live
-at https://adorable-licorice-bff0ca.netlify.app/ **There's something wrong with my publish directory in the build on netlify, I will investigate it**
+at https://adorable-licorice-bff0ca.netlify.app/
