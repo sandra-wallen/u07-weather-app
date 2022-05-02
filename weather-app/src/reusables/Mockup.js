@@ -1,3 +1,4 @@
+// Test data hourly forecast 
 export const hourlyDataMockup = [
   {
     date: new Date(),
@@ -99,6 +100,7 @@ export const hourlyDataMockup = [
   }
 ];
 
+// Test data daily forecast
 export const dailyDataMockup = [
   {
     date: new Date(),

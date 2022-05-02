@@ -10,8 +10,7 @@ const Main = ({ unit }) => {
   
 
   useEffect(() => {
-    console.log('main useEffect triggered');
-
+    // Get geolocation
     const success = (pos) => {
       const coords = pos.coords;
   

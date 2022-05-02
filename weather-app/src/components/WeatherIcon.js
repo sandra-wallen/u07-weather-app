@@ -5,6 +5,7 @@ const WeatherIcon = ({ weather, size, className }) => {
   const generateWeatherImg = () => {
     let imgSrc = "";
 
+    // Set img src based on props weather and size
     switch(weather) {
       case "Thunderstorm":
         imgSrc = `/icons/icons8-cloud-lightning-${size}.png`;
@@ -32,7 +33,7 @@ const WeatherIcon = ({ weather, size, className }) => {
   }
 
   return (
-    <img className={`${className} weather_icon`} src={generateWeatherImg()} alt={weather}/>
+    <img className={`${className} weather_icon`} src={generateWeatherImg()} alt={weather}/> // Optional class, currently only being used for the current weather icon
   )
 }
 

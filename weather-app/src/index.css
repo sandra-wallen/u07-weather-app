@@ -134,6 +134,7 @@ h1 {
 
 
 /* HOURLY FORECAST */
+/* Horizontal scroll section */
 .hourly-forecast__section {
   margin: 2rem 0;
   padding: 0.5rem;
@@ -219,7 +220,6 @@ h1 {
   .daily-forecast__container p {
     font-size: 2rem;
   }
-  
 }
 
 @media (min-width: 992px) {

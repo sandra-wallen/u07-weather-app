@@ -12,8 +12,8 @@ const Forecast = ({ lat, lon, unit }) => {
   const [forecastHourly, setForecastHourly] = useState(hourlyDataMockup);
 
   useEffect(() => {
-    console.log('Forecast useEffect triggered');
-
+    // Async await and callbacks not necessary atm. Will leave as is right now for 
+    // future implementation of filtering hourly forecast data based on daily forecast
     fetch(API_FORECAST_WEATHER(lat, lon, unit))
       .then(res => res.json())
       .then((data) => {
@@ -57,6 +57,7 @@ const Forecast = ({ lat, lon, unit }) => {
 
         handleHourlyData();
       })
+      .catch(err => console.error(err))
 
   }, [lat, lon, unit])
 

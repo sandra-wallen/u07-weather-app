@@ -6,6 +6,7 @@ import WeatherIcon from './WeatherIcon';
 
 const CurrentWeather = ({ lat, lon, unit }) => {
 
+  // Initial state used as mockup data
   const [currentWeather, setCurrentWeather] = useState({
     location: 'Älvsjö',
     temp: '12',
@@ -18,7 +19,6 @@ const CurrentWeather = ({ lat, lon, unit }) => {
   });
 
   useEffect(() => {
-    console.log('Current useEffect triggered');
 
     fetch(API_CURRENT_WEATHER(lat, lon, unit))
     .then(res => res.json())
@@ -27,7 +27,7 @@ const CurrentWeather = ({ lat, lon, unit }) => {
         location: data.name,
         temp: data.main.temp,
         weather: data.weather[0].main,
-        unit: unit === "metric" ? "C" : "F",
+        unit: unit === "metric" ? "C" : "F", // Show different unit shorthand based on chosen measurement unit
         wind: data.wind.speed,
         humidity: data.main.humidity,
         sunrise: data.sys.sunrise,

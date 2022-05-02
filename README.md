@@ -28,6 +28,8 @@ Because of the limited allowed api calls I made some very basic mockup data whic
 
 There's a "Each child in a list should have a unique "key" prop" warning on the map in daily forecast. Since I haven't stored anything that could be used as a unique identifier in the daily forecast data I used the indexes as the key, but I still get the warning so I'm guessing React doesn't think that's valid? I set process.env.CI = false to make netlify ignore this 😝
 
+I'm also getting a violation warning saying "Only request geolocation information in response to a user gesture.". When the user first visits the site there is a pop up asking for permission to user the users location, but the location is retrieved in the useEffect on mount and on state update and this is what's causing the violation. I would be totally fine with just retrieving the location on mount but since the state is refered to inside the useEffect, React complains if I leave the dependancy array empty.
+
 The requirements said that we should store temperature, weather, wind speed and humidity for every hour in the hourly forecast. I have stored this in the state, but it didn't make sence to me to show this to the user. When looking at different weather apps basically none of them show this much information about the hourly forecast so I decided to leave it out as well. But as I said, I still store it to meet the requirements.
 
 To be able to put as much of my time into the functionality of the app I put minimal effort into the styling, which probably is obvious when viewing my site 😅
